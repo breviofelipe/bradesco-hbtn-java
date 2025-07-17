@@ -17,15 +17,15 @@ public class PersonagemGame {
         return this.saudeAtual;
     }
 
-    public void tomarDano(int dano){
-        this.saudeAtual = this.saudeAtual - dano;
+    public void tomarDano(int quantidadeDeDano){
+        this.saudeAtual = this.saudeAtual - quantidadeDeDano;
         if(saudeAtual < 0){
             this.saudeAtual = 0;
         }
     }
 
-    public void receberCura(int cura) {
-        this.saudeAtual = this.saudeAtual + cura;
+    public void receberCura(int quantidadeDeCura) {
+        this.saudeAtual = this.saudeAtual + quantidadeDeCura;
         if(saudeAtual > 100){
             this.saudeAtual = 100;
         }
