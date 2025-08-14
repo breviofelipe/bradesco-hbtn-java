@@ -1,11 +1,13 @@
-public class Livro implements Produto{
+package produtos;
+public class Livro extends Produto {
 
     private int paginas, edicao;
     private String autor;
 
     @Override
-    public double obterPrecoLiquido(){
-
+    public double obterPrecoLiquido() {        
+        double desconto = 0.15;
+        return precoBruto + (precoBruto * desconto);
     }
 
     public Livro(String titulo, int ano, String pais, double precoBruto, int paginas, String autor, int edicao){
