@@ -9,8 +9,8 @@ public class Numero {
         } finally {
             if(b == 0){
                 System.out.println("Nao eh possivel dividir por zero");
-            } else
-                System.out.printf("%d / %d = %d", a, b, result);
+            } 
+            System.out.printf("%d / %d = %d", a, b, result);
         }
     }
 }
