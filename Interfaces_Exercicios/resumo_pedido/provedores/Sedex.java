@@ -1,0 +1,20 @@
+package provedores;
+
+public class Sedex extends ProvedorFrete{
+    
+    @Override
+    public Frete calcularFrete(double peso, double valor){
+        double valorFrete = 0;
+        if(peso > 1000){
+            valorFrete = valor * 0.1;
+        } else {
+            valorFrete = valor * 0.05;
+        }  
+        return new Frete(valorFrete, TipoProvedorFrete.SEDEX);
+    }
+
+    @Override
+    public TipoProvedorFrete obterTipoProvedorFrete(){
+        return TipoProvedorFrete.SEDEX;
+    }
+}
