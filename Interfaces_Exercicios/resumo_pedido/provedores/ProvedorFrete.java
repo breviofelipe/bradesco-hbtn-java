@@ -1,7 +1,7 @@
 package provedores;
 
-public abstract class ProvedorFrete {
+public interface ProvedorFrete {
     
-    abstract public Frete calcularFrete(double peso, double valor);
-    abstract public TipoProvedorFrete obterTipoProvedorFrete();
+    public Frete calcularFrete(double peso, double valor);
+    public TipoProvedorFrete obterTipoProvedorFrete();
 }

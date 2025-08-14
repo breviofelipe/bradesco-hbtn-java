@@ -1,6 +1,6 @@
 package provedores;
 
-public class JadLog extends ProvedorFrete {
+public class JadLog implements ProvedorFrete {
     
     @Override
     public Frete calcularFrete(double peso, double valor){
