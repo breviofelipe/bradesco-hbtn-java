@@ -41,7 +41,7 @@ public class Estoque {
         try (FileWriter fw = new FileWriter(arquivo, false);
              BufferedWriter bw = new BufferedWriter(fw)) {
             for (Produto p : produtos) {
-                bw.write(p.getId() + "," + p.getNome() + "," + p.getQuantidade());
+                bw.write(p.getId() + "," + p.getNome() + "," + p.getQuantidade() + "," + p.getPreco());
                 bw.newLine();
             }
         } catch (IOException e) {
