@@ -1,7 +1,9 @@
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import java.io.ObjectOutputStream;
@@ -36,8 +38,12 @@ public class Estoque {
     }
 
     private void salvarProdutos(List<Produto> produtos) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(arquivo))) {
-            oos.writeObject(produtos);
+        try (FileWriter fw = new FileWriter(arquivo, false);
+             BufferedWriter bw = new BufferedWriter(fw)) {
+            for (Produto p : produtos) {
+                bw.write(p.getId() + "," + p.getNome() + "," + p.getQuantidade());
+                bw.newLine();
+            }
         } catch (IOException e) {
             System.out.println("Erro ao salvar produtos: " + e.getMessage());
         }
