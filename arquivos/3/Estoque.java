@@ -49,8 +49,9 @@ public class Estoque {
         }
     }
 
-    public void adicionarProduto(Produto produto) {
+    private void adicionarProduto(Produto produto) {
         List<Produto> produtos = lerProdutos();
+        produto.setId(produtos.size()+1);
         produtos.add(produto);
         salvarProdutos(produtos);
     }
@@ -82,7 +83,7 @@ public class Estoque {
     }
 
     public void adicionarProduto(String nome, int quantidade, double preco) {
-
+        adicionarProduto(new Produto(0, nome, quantidade, preco));
     }
 
 }
