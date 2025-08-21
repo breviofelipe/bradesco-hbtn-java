@@ -1,20 +1,19 @@
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Estoque {
     private final String arquivo;
+    private int id;
 
     public Estoque (String arquivo){
         this.arquivo = arquivo;
+        id = lerProdutos().size();
     }
 
     private List<Produto> lerProdutos() {
@@ -51,7 +50,6 @@ public class Estoque {
 
     private void adicionarProduto(Produto produto) {
         List<Produto> produtos = lerProdutos();
-        produto.setId(produtos.size()+1);
         produtos.add(produto);
         salvarProdutos(produtos);
     }
@@ -83,7 +81,8 @@ public class Estoque {
     }
 
     public void adicionarProduto(String nome, int quantidade, double preco) {
-        adicionarProduto(new Produto(0, nome, quantidade, preco));
+        id+=1;
+        adicionarProduto(new Produto(id, nome, quantidade, preco));
     }
 
 }
