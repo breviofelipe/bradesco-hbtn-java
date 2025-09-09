@@ -74,8 +74,6 @@ public class GerenciamentoDeContatos {
         // Exibindo todos os contatos
         System.out.println("\nExibindo todos os contatos:");
         gestao.exibirContatos();
-
-        System.out.println();
         // Buscando um contato
         System.out.println("\nBuscando contato 'Maria':");
         gestao.buscarContato("Maria");
