@@ -34,7 +34,7 @@ public class GerenciamentoDeContatos {
                 entry.getValue().exibirContato();
                 System.out.println("-------------------------------");
             }
-            System.out.println();
+            
         }
     }
 
@@ -71,12 +71,11 @@ public class GerenciamentoDeContatos {
         gestao.adicionarContato("Ana", "1122-3344", "ana@email.com");
         gestao.adicionarContato("Carlos", "1234-5678", "carlos@email.com"); // Tentando duplicar
 
-
         // Exibindo todos os contatos
         System.out.println("\nExibindo todos os contatos:");
         gestao.exibirContatos();
 
-
+        System.out.println();
         // Buscando um contato
         System.out.println("\nBuscando contato 'Maria':");
         gestao.buscarContato("Maria");
