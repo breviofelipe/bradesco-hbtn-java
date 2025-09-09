@@ -19,7 +19,7 @@ public class GerenciamentoDeContatos {
             contatos.put(nome, novoContato);
             System.out.println("Contato adicionado com sucesso.");
         } else {
-            System.out.printf("Erro: Contato com nome %s já existe!\n\n", nome);
+            System.out.printf("Erro: Contato com nome %s já existe!\n", nome);
         }
  
     }
@@ -44,7 +44,6 @@ public class GerenciamentoDeContatos {
         if (contato != null) {
             System.out.println("Contato encontrado: " + nome);
             contato.exibirContato();
-            System.out.println();
         } else {
             System.out.printf("Erro: Contato '%s' não encontrado.\n", nome);
         }
@@ -54,10 +53,8 @@ public class GerenciamentoDeContatos {
     public void removerContato(String nome) {
         if (contatos.remove(nome) != null) {
             System.out.printf("Contato %s removido com sucesso!\n", nome);
-            System.out.println();
         } else {
             System.out.printf("Contato %s não encontrado.\n", nome);
-            System.out.println();
         }
     }
 
