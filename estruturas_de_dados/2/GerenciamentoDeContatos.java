@@ -47,16 +47,19 @@ public class GerenciamentoDeContatos {
             contato.exibirContato();
             System.out.print("\n");
         } else {
-            System.out.printf("Erro: Contato '%s' não encontrado.\n\n", nome);
+            System.out.printf("Contato '%s' não encontrado.", nome);
+            System.out.print("\n");
         }
     }
 
     // Remove um contato pelo nome
     public void removerContato(String nome) {
         if (contatos.remove(nome) != null) {
-            System.out.println("Contato removido com sucesso.\n");
+            System.out.printf("Contato '%s' removido com sucesso.", nome);
+            System.out.println("\n");
         } else {
-            System.out.printf("Erro: Contato '%s' não encontrado.\n", nome);
+            System.out.printf("Erro: Contato '%s' não encontrado.", nome);
+            System.out.println("\n");
         }
     }
 
