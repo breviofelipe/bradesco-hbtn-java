@@ -20,6 +20,7 @@ public class GerenciamentoDeContatos {
             System.out.println("Contato adicionado com sucesso.");
         } else {
             System.out.printf("Erro: Contato '%s' já existe.\n", nome);
+            System.out.print("\n");
         }
  
     }
@@ -32,7 +33,9 @@ public class GerenciamentoDeContatos {
             for (Map.Entry<String, Contato> entry : contatos.entrySet()) {
                 System.out.println("Nome: " + entry.getKey());
                 entry.getValue().exibirContato();
+                System.out.println("-------------------------------");
             }
+            System.out.print("\n");
         }
     }
 
@@ -42,15 +45,16 @@ public class GerenciamentoDeContatos {
         if (contato != null) {
             System.out.println("Contato encontrado: " + nome);
             contato.exibirContato();
+            System.out.print("\n");
         } else {
-            System.out.printf("Erro: Contato '%s' não encontrado.\n", nome);
+            System.out.printf("Erro: Contato '%s' não encontrado.\n\n", nome);
         }
     }
 
     // Remove um contato pelo nome
     public void removerContato(String nome) {
         if (contatos.remove(nome) != null) {
-            System.out.println("Contato removido com sucesso.");
+            System.out.println("Contato removido com sucesso.\n");
         } else {
             System.out.printf("Erro: Contato '%s' não encontrado.\n", nome);
         }
