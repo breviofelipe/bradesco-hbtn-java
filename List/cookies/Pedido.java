@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Pedido {
 
-    List<PedidoCookie> cookies;   
+    ArrayList<PedidoCookie> cookies;   
 
     public Pedido() {
-        this.cookies = new ArrayList<>();
+        this.cookies = new ArrayList<PedidoCookie>();
     }
 
     public void adicionarPedidoCookie(PedidoCookie pedidoCookie) {
