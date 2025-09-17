@@ -21,7 +21,7 @@ public class Blog {
     }
 
     public Map<Categorias, Integer> obterContagemPorCategoria() {
-        Map<Categorias, Integer> contagem = new HashMap<>();
+        Map<Categorias, Integer> contagem = new HashMap<Categorias, Integer>();
         postagens.stream()
             .sorted(Comparator.comparing(Post::getTitulo))
             .forEach(p -> contagem.put(p.getCategoria(), contagem.getOrDefault(p.getCategoria(), 0) + 1));      
