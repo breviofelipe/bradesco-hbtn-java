@@ -15,44 +15,51 @@ public class Blog {
 
     public Set<Autor> obterTodosAutores() {
         return postagens.stream()
-                .map(Post::getAutor)
-                .collect(Collectors.toCollection(TreeSet::new));
+            .sorted(Comparator.comparing(Post::getTitulo))
+            .map(Post::getAutor)
+            .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     public Map<Categorias, Integer> obterContagemPorCategoria() {
         Map<Categorias, Integer> contagem = new HashMap<>();
-        for (Post p : postagens) {
-            contagem.put(p.getCategoria(), contagem.getOrDefault(p.getCategoria(), 0) + 1);
-        }
+        postagens.stream()
+            .sorted(Comparator.comparing(Post::getTitulo))
+            .forEach(p -> contagem.put(p.getCategoria(), contagem.getOrDefault(p.getCategoria(), 0) + 1));      
         return contagem;
     }
 
     public Set<Post> obterPostsPorAutor(Autor autor) {
         return postagens.stream()
                 .filter(p -> p.getAutor().compareTo(autor) == 0)
-                .sorted() // Usa o compareTo de Post
+                .sorted(Comparator.comparing(Post::getTitulo))
                 .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     public Set<Post> obterPostsPorCategoria(Categorias categoria) {
         return postagens.stream()
-            .filter(p -> p.getCategoria().equals(categoria))
-            .sorted() // Usa o compareTo de Post
+            .filter(p -> p.getCategoria().compareTo(categoria) == 0)
+            .sorted(Comparator.comparing(Post::getTitulo))
             .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     public Map<Categorias, Set<Post>> obterTodosPostsPorCategorias() {
         Map<Categorias, Set<Post>> map = new HashMap<>();
-        for (Post p : postagens) {
-            map.computeIfAbsent(p.getCategoria(), k -> new TreeSet<>()).add(p);
+        for (Categorias categoria : Arrays.asList(Categorias.values())) {
+            Set<Post> posts = obterPostsPorCategoria(categoria);
+            if (!posts.isEmpty()) {
+                map.put(categoria, posts);
+            }
         }
         return map;
     }
 
     public Map<Autor, Set<Post>> obterTodosPostsPorAutor() {
-        Map<Autor, Set<Post>> map = new HashMap<>();
-        for (Post p : postagens) {
-            map.computeIfAbsent(p.getAutor(), k -> new TreeSet<>()).add(p);
+        Map<Autor, Set<Post>> map = new LinkedHashMap<>();
+        for (Autor autor : obterTodosAutores()) {
+            Set<Post> posts = obterPostsPorAutor(autor);
+            if (!posts.isEmpty()) {
+                map.put(autor, posts);
+            }
         }
         return map;
     }
