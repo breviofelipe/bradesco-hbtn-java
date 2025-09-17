@@ -21,10 +21,13 @@ public class Blog {
     }
 
     public Map<Categorias, Integer> obterContagemPorCategoria() {
-        Map<Categorias, Integer> contagem = new HashMap<Categorias, Integer>();
+        Map<Categorias, Integer> contagem = new LinkedHashMap<Categorias, Integer>();
         postagens.stream()
-            .sorted(Comparator.comparing(Post::getTitulo))
-            .forEach(p -> contagem.put(p.getCategoria(), contagem.getOrDefault(p.getCategoria(), 0) + 1));      
+            .sorted(Comparator.comparing(Post::getCategoria))
+            .map(Post::getCategoria)
+            .forEach(p -> {
+                contagem.put(p, obterPostsPorCategoria(p).size());
+            });      
         return contagem;
     }
 
@@ -43,7 +46,7 @@ public class Blog {
     }
 
     public Map<Categorias, Set<Post>> obterTodosPostsPorCategorias() {
-        Map<Categorias, Set<Post>> map = new HashMap<>();
+        Map<Categorias, Set<Post>> map = new LinkedHashMap<>();
         for (Categorias categoria : Arrays.asList(Categorias.values())) {
             Set<Post> posts = obterPostsPorCategoria(categoria);
             if (!posts.isEmpty()) {
