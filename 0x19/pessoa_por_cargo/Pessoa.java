@@ -38,6 +38,6 @@ public class Pessoa {
     @Override
     public String toString() {
         Locale brasil = new Locale("pt", "BR");
-        return String.format("[%d] %s %s %d R$ %f", codigo, nome, cargo, idade, salario);
+        return String.format(brasil,"[%d] %s %s %d R$ %f", codigo, nome, cargo, idade, salario);
     }
 }
