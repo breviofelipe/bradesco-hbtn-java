@@ -13,7 +13,7 @@ public class SistemaFilas {
         c2.start();
 
         // executa por 20 segundos
-        Thread.sleep(20_000);
+        Thread.sleep(20000);
 
         // solicita parada graciosa
         System.out.println("Solicitando parada das threads...");
